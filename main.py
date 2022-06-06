@@ -35,7 +35,6 @@ while True:
 
             else:
                 if ((ipv4 != ipv4Old) and (record.target == ipv4Old)):
-                    print('4: DomainRecord().target = ' + ipv4)
                     domain.record_create(record_type="A",name=record.name,target=ipv4)
                     record.delete()
 
