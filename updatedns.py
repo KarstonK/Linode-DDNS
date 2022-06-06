@@ -10,17 +10,11 @@ client = LinodeClient(apiToken)
 
 def get_prefix(input_address):
     address_list = input_address.split(':')
-    address_list_output = []
-    for i in range(int(prefixLength / 16)):
-        address_list_output.append(address_list[i])
-    return ':'.join(address_list_output)
+    return ':'.join(address_list[:int(prefixLength / 16)])
 
 def change_prefix(input_address, new_prefix):
     address_list = input_address.split(':')
-    new_prefix_list = new_prefix.split(':')
-    for i in range(len(new_prefix_list)):
-        address_list[i] = new_prefix_list[i]
-    return ':'.join(address_list)
+    return new_prefix + ':' + ':'.join(address_list[int(prefixLength / 16):])
 
 domain = Domain(client, domainId)
 
