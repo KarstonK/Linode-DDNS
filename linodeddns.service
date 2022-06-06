@@ -1,0 +1,13 @@
+[Unit]
+Description=Automatically updates dns entries in Linode if the addresses are changed
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=root
+WorkingDirectory=/opt/Linode-DDNS
+ExecStart=/usr/bin/python3 /opt/Linode-DDNS/main.py
+
+[Install]
+WantedBy=multi-user.target
